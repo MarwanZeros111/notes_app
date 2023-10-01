@@ -9,7 +9,7 @@ class customAppBar extends StatelessWidget {
     return Row(
       children: [
         SizedBox(
-          height: 90,
+          height: 30,
         ),
         Text(
           'Notes',
