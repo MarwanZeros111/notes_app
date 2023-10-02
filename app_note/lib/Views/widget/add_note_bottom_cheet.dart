@@ -1,3 +1,4 @@
+import 'package:app_note/Views/widget/custom_text_field.dart';
 import 'package:flutter/material.dart';
 
 class bottomsheet extends StatelessWidget {
@@ -5,6 +6,16 @@ class bottomsheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      child: Column(
+        children: [
+          SizedBox(
+            height: 36,
+          ),
+          customtext()
+        ],
+      ),
+    );
   }
 }
