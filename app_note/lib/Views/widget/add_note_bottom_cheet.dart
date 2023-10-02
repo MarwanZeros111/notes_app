@@ -13,7 +13,16 @@ class bottomsheet extends StatelessWidget {
           SizedBox(
             height: 36,
           ),
-          customtext()
+          customtext(
+            hint: 'Title',
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          customtext(
+            hint: 'Content',
+            maxlen: 6,
+          )
         ],
       ),
     );
