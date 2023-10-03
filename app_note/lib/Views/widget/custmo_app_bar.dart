@@ -2,9 +2,10 @@ import 'package:app_note/Views/widget/custom_icon.dart';
 import 'package:flutter/material.dart';
 
 class customAppBar extends StatelessWidget {
-  const customAppBar({super.key});
+  const customAppBar({required this.text, super.key});
 
   @override
+  final String text;
   Widget build(BuildContext context) {
     return Row(
       children: [
@@ -12,7 +13,7 @@ class customAppBar extends StatelessWidget {
           height: 30,
         ),
         Text(
-          'Notes',
+          text,
           style: TextStyle(fontSize: 30),
         ),
         Spacer(),
