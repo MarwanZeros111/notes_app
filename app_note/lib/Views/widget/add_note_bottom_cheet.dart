@@ -13,7 +13,7 @@ class bottomsheet extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-              height: 36,
+              height: 50,
             ),
             customtext(
               hint: 'Title',
@@ -28,7 +28,9 @@ class bottomsheet extends StatelessWidget {
             SizedBox(
               height: 32,
             ),
-            custombottom(),
+            custombottom(
+              title: 'Save',
+            ),
             SizedBox(
               height: 16,
             ),

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class custombottom extends StatelessWidget {
-  const custombottom({super.key});
+  const custombottom({super.key, required this.title});
 
   @override
+  final String title;
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
@@ -14,7 +15,7 @@ class custombottom extends StatelessWidget {
       ),
       child: Center(
         child: Text(
-          'save',
+          title,
           style: TextStyle(color: Colors.black, fontSize: 20),
         ),
       ),
