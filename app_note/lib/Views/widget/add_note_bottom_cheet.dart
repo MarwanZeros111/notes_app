@@ -7,34 +7,70 @@ class bottomsheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return addNote();
+  }
+}
+
+class addNote extends StatefulWidget {
+  const addNote({
+    super.key,
+  });
+
+  @override
+  State<addNote> createState() => _addNoteState();
+}
+
+class _addNoteState extends State<addNote> {
+  @override
+  final GlobalKey<FormState> formkey = GlobalKey();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  String? title, subtitle;
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       child: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 50,
-            ),
-            customtext(
-              hint: 'Title',
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            customtext(
-              hint: 'Content',
-              maxlen: 6,
-            ),
-            SizedBox(
-              height: 32,
-            ),
-            custombottom(
-              title: 'Save',
-            ),
-            SizedBox(
-              height: 16,
-            ),
-          ],
+        child: Form(
+          key: formkey,
+          autovalidateMode: autovalidateMode,
+          child: Column(
+            children: [
+              SizedBox(
+                height: 50,
+              ),
+              customtext(
+                onsaved: (data) {
+                  title = data;
+                },
+                hint: 'Title',
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              customtext(
+                onsaved: (data) {
+                  subtitle = data;
+                },
+                hint: 'Content',
+                maxlen: 6,
+              ),
+              SizedBox(
+                height: 32,
+              ),
+              custombottom(
+                onTap: () {
+                  if (formkey.currentState!.validate()) {
+                    formkey.currentState!.save();
+                  } else {
+                    autovalidateMode = AutovalidateMode.always;
+                  }
+                },
+                title: 'Save',
+              ),
+              SizedBox(
+                height: 16,
+              ),
+            ],
+          ),
         ),
       ),
     );
