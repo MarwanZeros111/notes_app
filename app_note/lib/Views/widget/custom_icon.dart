@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class icon extends StatelessWidget {
-  const icon({super.key});
+  const icon({super.key, required this.ico});
 
   @override
+  final IconData ico;
   Widget build(BuildContext context) {
     return Container(
       height: 45,
@@ -11,9 +12,9 @@ class icon extends StatelessWidget {
       decoration: BoxDecoration(
           color: const Color.fromARGB(255, 68, 63, 63),
           borderRadius: BorderRadius.circular(16)),
-      child: const Center(
+      child: Center(
         child: Icon(
-          Icons.search,
+          ico,
           size: 28,
         ),
       ),

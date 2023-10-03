@@ -1,4 +1,6 @@
 import 'package:app_note/Views/widget/custmo_app_bar.dart';
+import 'package:app_note/Views/widget/custom_icon.dart';
+import 'package:app_note/Views/widget/custom_text_field.dart';
 import 'package:flutter/material.dart';
 
 class editNoteViewbody extends StatelessWidget {
@@ -11,9 +13,23 @@ class editNoteViewbody extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            height: 30,
+            height: 50,
           ),
-          customAppBar(text: 'edit')
+          customAppBar(
+            text: 'Edit Note',
+            ico: Icons.check,
+          ),
+          SizedBox(
+            height: 50,
+          ),
+          customtext(hint: 'Title'),
+          SizedBox(
+            height: 20,
+          ),
+          customtext(
+            hint: 'content',
+            maxlen: 7,
+          )
         ],
       ),
     );
