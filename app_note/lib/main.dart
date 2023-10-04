@@ -1,4 +1,5 @@
 import 'package:app_note/Views/note_view.dart';
+import 'package:app_note/block_obseve.dart';
 import 'package:app_note/constant.dart';
 import 'package:app_note/cubits/cubit/add_note_cubit.dart';
 import 'package:app_note/models/note_model.dart';
@@ -8,6 +9,7 @@ import 'package:hive_flutter/adapters.dart';
 
 void main() async {
   await Hive.initFlutter();
+  Bloc.observer = SimbleblockObserve();
   await Hive.openBox(kNotebox);
   Hive.registerAdapter(NoteModelAdapter());
   runApp(const notesApp());
