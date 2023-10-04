@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 
 class Notescubit extends Cubit<NotesState> {
-  Notescubit(super.initialState);
+  Notescubit() : super(AddNotesInitial());
 
   addNote(NoteModel note) async {
     emit(AddNotesLoading());
