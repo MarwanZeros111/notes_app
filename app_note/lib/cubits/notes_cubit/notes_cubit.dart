@@ -6,14 +6,9 @@ import 'package:hive/hive.dart';
 
 class NotesCubit extends Cubit<NotesState> {
   NotesCubit() : super(NotesInitial());
-
+  List<NoteModel>? notes;
   fetchallNotes() async {
-    try {
-      var notesbox = Hive.box<NoteModel>(kNotebox);
-      List<NoteModel> notes = notesbox.values.toList();
-      emit(NotesSuccess(notes));
-    } catch (e) {
-      emit(NotesFaliuar(e.toString()));
-    }
+    var notesbox = Hive.box<NoteModel>(kNotebox);
+    notes = notesbox.values.toList();
   }
 }
