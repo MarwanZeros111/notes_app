@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 @immutable
-abstract class NotesState {}
+abstract class addNotesState {}
 
-class AddNotesInitial extends NotesState {}
+class AddNotesInitial extends addNotesState {}
 
-class AddNotesLoading extends NotesState {}
+class AddNotesLoading extends addNotesState {}
 
-class AddNotesSuccess extends NotesState {}
+class AddNotesSuccess extends addNotesState {}
 
-class AddNotesFaluir extends NotesState {
+class AddNotesFaluir extends addNotesState {
   final String errMessage;
 
   AddNotesFaluir(this.errMessage);

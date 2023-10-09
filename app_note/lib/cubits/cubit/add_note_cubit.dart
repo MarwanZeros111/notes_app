@@ -4,8 +4,8 @@ import 'package:app_note/models/note_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 
-class Notescubit extends Cubit<NotesState> {
-  Notescubit() : super(AddNotesInitial());
+class addNotescubit extends Cubit<addNotesState> {
+  addNotescubit() : super(AddNotesInitial());
 
   addNote(NoteModel note) async {
     emit(AddNotesLoading());
@@ -14,7 +14,7 @@ class Notescubit extends Cubit<NotesState> {
       emit(AddNotesSuccess());
       await notesbox.add(note);
     } catch (e) {
-      AddNotesFaluir(e.toString());
+      emit(AddNotesFaluir(e.toString()));
     }
   }
 }

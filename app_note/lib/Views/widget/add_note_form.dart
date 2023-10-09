@@ -1,6 +1,10 @@
 import 'package:app_note/Views/widget/custom_bottom.dart';
 import 'package:app_note/Views/widget/custom_text_field.dart';
+import 'package:app_note/cubits/cubit/add_note_cubit.dart';
+import 'package:app_note/cubits/cubit/add_note_state.dart';
+import 'package:app_note/models/note_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class addNote extends StatefulWidget {
   const addNote({
@@ -47,18 +51,30 @@ class _addNoteState extends State<addNote> {
               SizedBox(
                 height: 32,
               ),
-              custombottom(
-                onTap: () {
-                  if (formkey.currentState!.validate()) {
-                    formkey.currentState!.save();
-                  } else {
-                    autovalidateMode = AutovalidateMode.always;
-                  }
-                },
-                title: 'Save',
-              ),
+              BlocBuilder<addNotescubit, addNotesState>(
+                  builder: (context, state) {
+                return custombottom(
+                  isLoading: state is AddNotesLoading ? true : false,
+                  onTap: () {
+                    if (formkey.currentState!.validate()) {
+                      formkey.currentState!.save();
+                      var noteModal = NoteModel(
+                          title: title!,
+                          subtitle: subtitle!,
+                          date: DateTime.now().toString(),
+                          color: Colors.blue.value);
+                      BlocProvider.of<addNotescubit>(context)
+                          .addNote(noteModal);
+                    } else {
+                      autovalidateMode = AutovalidateMode.always;
+                      setState(() {});
+                    }
+                  },
+                  title: 'Add',
+                );
+              }),
               SizedBox(
-                height: 16,
+                height: 30,
               ),
             ],
           ),

@@ -15,22 +15,24 @@ class bottomsheet extends StatefulWidget {
 class _bottomsheetState extends State<bottomsheet> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: SingleChildScrollView(
-          child:
-              BlocConsumer<Notescubit, NotesState>(listener: (context, state) {
-            if (state is AddNotesFaluir) {
-              print('Failed ${state.errMessage}');
-            }
-            if (state is AddNotesSuccess) {
-              Navigator.pop(context);
-            }
-          }, builder: (context, state) {
-            return ModalProgressHUD(
-                inAsyncCall: state is AddNotesLoading ? true : false,
-                child: addNote());
-          }),
-        ));
+    return BlocProvider(
+      create: (context) => addNotescubit(),
+      child: BlocConsumer<addNotescubit, addNotesState>(
+          listener: (context, state) {
+        if (state is AddNotesFaluir) {
+          print('Failed ${state.errMessage}');
+        }
+        if (state is AddNotesSuccess) {
+          Navigator.pop(context);
+        }
+      }, builder: (context, state) {
+        return AbsorbPointer(
+            absorbing: state is AddNotesLoading ? true : false,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: SingleChildScrollView(child: addNote()),
+            ));
+      }),
+    );
   }
 }

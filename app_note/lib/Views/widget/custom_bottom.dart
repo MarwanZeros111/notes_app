@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 class custombottom extends StatelessWidget {
-  const custombottom({super.key, required this.title, this.onTap});
+  const custombottom(
+      {super.key, required this.title, this.onTap, this.isLoading = false});
 
   @override
   final String title;
-
+  final bool isLoading;
   final void Function()? onTap;
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -18,10 +19,14 @@ class custombottom extends StatelessWidget {
           color: Color(0xff62FCD7),
         ),
         child: Center(
-          child: Text(
-            title,
-            style: TextStyle(color: Colors.black, fontSize: 20),
-          ),
+          child: isLoading
+              ? CircularProgressIndicator(
+                  color: Colors.black,
+                )
+              : Text(
+                  title,
+                  style: TextStyle(color: Colors.black, fontSize: 20),
+                ),
         ),
       ),
     );
