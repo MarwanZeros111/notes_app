@@ -1,6 +1,7 @@
 import 'package:app_note/Views/widget/add_note_form.dart';
 import 'package:app_note/cubits/cubit/add_note_cubit.dart';
 import 'package:app_note/cubits/cubit/add_note_state.dart';
+import 'package:app_note/cubits/notes_cubit/notes_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,11 +19,10 @@ class _bottomsheetState extends State<bottomsheet> {
       create: (context) => addNotescubit(),
       child: BlocConsumer<addNotescubit, addNotesState>(
           listener: (context, state) {
-        if (state is AddNotesFaluir) {
-          print('Failed ${state.errMessage}');
-        }
+        if (state is AddNotesFaluir) {}
         if (state is AddNotesSuccess) {
           Navigator.pop(context);
+          BlocProvider.of<NotesCubit>(context).fetchallNotes();
         }
       }, builder: (context, state) {
         return AbsorbPointer(
