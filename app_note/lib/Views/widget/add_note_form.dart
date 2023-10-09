@@ -5,9 +5,10 @@ import 'package:app_note/cubits/cubit/add_note_state.dart';
 import 'package:app_note/models/note_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 class addNote extends StatefulWidget {
-  const addNote({
+  addNote({
     super.key,
   });
 
@@ -58,10 +59,13 @@ class _addNoteState extends State<addNote> {
                   onTap: () {
                     if (formkey.currentState!.validate()) {
                       formkey.currentState!.save();
+                      var currentDate = DateTime.now();
+                      var formatedcurrent =
+                          DateFormat.yMd().format(currentDate);
                       var noteModal = NoteModel(
                           title: title!,
                           subtitle: subtitle!,
-                          date: DateTime.now().toString(),
+                          date: formatedcurrent,
                           color: Colors.blue.value);
                       BlocProvider.of<addNotescubit>(context)
                           .addNote(noteModal);

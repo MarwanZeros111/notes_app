@@ -32,7 +32,7 @@ class _bottomsheetState extends State<bottomsheet> {
                   left: 16,
                   right: 16,
                   bottom: MediaQuery.of(context).viewInsets.bottom),
-              child: const SingleChildScrollView(child: addNote()),
+              child: SingleChildScrollView(child: addNote()),
             ));
       }),
     );

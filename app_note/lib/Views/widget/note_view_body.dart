@@ -1,4 +1,3 @@
-import 'package:app_note/Views/edit_note_view.dart';
 import 'package:app_note/Views/widget/custmo_app_bar.dart';
 import 'package:app_note/Views/widget/notes_list_view.dart';
 import 'package:app_note/cubits/notes_cubit/notes_cubit.dart';

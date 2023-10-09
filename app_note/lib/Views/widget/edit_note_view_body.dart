@@ -1,6 +1,4 @@
 import 'package:app_note/Views/widget/custmo_app_bar.dart';
-import 'package:app_note/Views/widget/custom_bottom.dart';
-import 'package:app_note/Views/widget/custom_icon.dart';
 import 'package:app_note/Views/widget/custom_text_field.dart';
 import 'package:flutter/material.dart';
 
