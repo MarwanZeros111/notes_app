@@ -3,7 +3,6 @@ import 'package:app_note/cubits/cubit/add_note_cubit.dart';
 import 'package:app_note/cubits/cubit/add_note_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class bottomsheet extends StatefulWidget {
   const bottomsheet({super.key});
@@ -29,8 +28,11 @@ class _bottomsheetState extends State<bottomsheet> {
         return AbsorbPointer(
             absorbing: state is AddNotesLoading ? true : false,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: SingleChildScrollView(child: addNote()),
+              padding: EdgeInsets.only(
+                  left: 16,
+                  right: 16,
+                  bottom: MediaQuery.of(context).viewInsets.bottom),
+              child: const SingleChildScrollView(child: addNote()),
             ));
       }),
     );
