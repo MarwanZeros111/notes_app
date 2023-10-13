@@ -1,3 +1,4 @@
+import 'package:app_note/Views/widget/colr_view.dart';
 import 'package:app_note/Views/widget/custom_bottom.dart';
 import 'package:app_note/Views/widget/custom_text_field.dart';
 import 'package:app_note/cubits/cubit/add_note_cubit.dart';
@@ -49,6 +50,10 @@ class _addNoteState extends State<addNote> {
                 hint: 'Content',
                 maxlen: 6,
               ),
+              SizedBox(
+                height: 32,
+              ),
+              colorview(),
               SizedBox(
                 height: 32,
               ),

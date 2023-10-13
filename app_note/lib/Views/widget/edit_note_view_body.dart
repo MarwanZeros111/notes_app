@@ -1,7 +1,9 @@
 import 'package:app_note/Views/widget/custmo_app_bar.dart';
 import 'package:app_note/Views/widget/custom_text_field.dart';
+import 'package:app_note/cubits/notes_cubit/notes_cubit.dart';
 import 'package:app_note/models/note_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class editNoteViewbody extends StatefulWidget {
   const editNoteViewbody({super.key, required this.note});
@@ -30,7 +32,7 @@ class _editNoteViewbodyState extends State<editNoteViewbody> {
                 widget.note.title = title ?? widget.note.title;
                 widget.note.subtitle = subtitle ?? widget.note.subtitle;
                 widget.note.save();
-
+                BlocProvider.of<NotesCubit>(context).fetchallNotes();
                 Navigator.pop(context);
               },
               text: 'Edit Note',
